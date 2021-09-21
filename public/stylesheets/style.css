@@ -1,0 +1,40 @@
+body {
+  background: url(../images/fondo.png);
+  background-size: 36rem;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+footer{
+  background-color: #aaa;
+}
+
+h2{
+  background-color: #ffe2fd;
+  position: relative;
+}
+
+#promo{
+  position: relative;
+}
+
+#promo::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.1;
+  position: absolute;
+}
+
+#nosotros{
+  position: relative;
+}
+
+#nosotros::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.1;
+  position: absolute;
+}
