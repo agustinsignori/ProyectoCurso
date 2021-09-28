@@ -9,8 +9,11 @@ footer{
 }
 
 h2{
-  background-color: #ffe2fd;
-  position: relative;
+  background-color: #ffc1c3;
+}
+
+h6{
+  background-color: #ffc1c3;
 }
 
 #promo{
@@ -37,4 +40,8 @@ h2{
   background-color: black;
   opacity: 0.1;
   position: absolute;
+}
+
+#img_redes{
+  text-align: center;
 }

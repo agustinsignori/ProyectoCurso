@@ -1,13 +1,46 @@
 var express = require('express');
 var router = express.Router();
 var serviciosModel = require('./../../models/serviciosModel');
+var util = require('util');
+var cloudinary = require('cloudinary').v2;
+const uploader = util.promisify(cloudinary.uploader.upload);
+const destroy = util.promisify(cloudinary.uploader.destroy);
 
 router.get('/', async function (req, res, next) {
-    var servicios = await serviciosModel.getServicios();
+    //var servicios = await serviciosModel.getServicios();
+
+    var servicios
+    if (req.query.q === undefined) {
+        servicios = await serviciosModel.getServicios();
+    } else {
+        servicios = await serviciosModel.buscarServicios(req.query.q);
+    }
+
+    servicios = servicios.map(servicio => {
+        if (servicio.img_id) {
+            const imagen = cloudinary.image(servicio.img_id, {
+                width: 80,
+                height: 80,
+                crop: 'fill'
+            });
+            return {
+                ...servicio,
+                imagen
+            }
+        } else {
+            return {
+                ...servicio,
+                imagen: ''
+            }
+        }
+    });
+
     res.render('admin/servicios', {
         layout: 'admin/layout',
         usuario: req.session.nombre,
-        servicios
+        servicios,
+        is_search: req.query.q !== undefined,
+        q: req.query.q
     });
 });
 

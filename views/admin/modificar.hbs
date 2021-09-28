@@ -13,6 +13,10 @@
                     <input type="text" class="form-control" name="subtitulo" value="{{servicio.subtitulo}}">
                 </div>
                 <div class="from-group">
+                    <label for="">Cuerpo</label>
+                    <textarea name="cuerpo" class="form-control">{{servicio.cuerpo}}</textarea>
+                </div>
+                <div class="from-group">
                     <p>
                         <label>Imagen: <input type="file" name="imagen" id="imagen" / ></label>
                     </p>
@@ -21,10 +25,6 @@
                             Eliminar imagen actual?</label>
                         <input type="hidden" name="img_original" value="{{servicio.img_id}}">
                     </p>
-                </div>
-                <div class="from-group">
-                    <label for="">Cuerpo</label>
-                    <textarea name="cuerpo" class="form-control">{{servicio.cuerpo}}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>
